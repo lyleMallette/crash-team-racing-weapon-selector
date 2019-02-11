@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>CTR Weapon</title>
+
+    <style>
+        html {
+            font-family:"crash-a-like";
+            font-size:16px;
+            margin:10px;
+        }
+        
+        .main {
+            width:60%;
+            margin:auto;
+            text-align:center;
+            font-size:26px;
+        }
+        
+        .main img {
+            display:block;
+            margin:auto;
+            padding-bottom:20px;
+        }
+        
+        .weapon-crate {
+            font-size:96px;
+            font-weight:bold;
+            font-family:"helvetica";
+            padding:10px 38px;
+            color:yellow;
+            background-color:#dd7700;
+            border:3px #994422 solid;
+            border-style:solid;
+            cursor:pointer;
+        }
+        
+        label {
+            cursor:text;
+        }
+        
+        .position {
+            width:30px;
+            border-color:grey;
+        }
+        
+        .validate {
+            display:none;
+            position:absolute;
+            color:red;
+            font-size:16px;
+            font-family:lato;
+            margin-top:3px;
+        }
+    </style>
+  </head>
+
+  <body>
+    <div class="main">
+        <img src="img/Crash_Team_Racing_Logo.png" alt="Crash Team Racing">
+        <label for="position">What position are you in? </label><input type="text" name="position" class="position" patter="[1-8]" maxlength="1">
+        <p class="validate">Please enter a number between 1 and 8</p><br><br>
+        <button class="weapon-crate">?</button><br><br>
+    
+    <img src="" class="weapon-image">    
+    <div class="weapon"></div>
+    
+    </div>
+      
+    <script>
+      var weaponCrate = document.querySelector(".weapon-crate");
+      var position = document.querySelector(".position");
+      var validate = document.querySelector(".validate");
+      var weapon = document.querySelector(".weapon");
+      var weaponImage = document.querySelector(".weapon-image");
+      var weaponList1 = [ 
+          { name: "TNT", src: "img/tnt.jpg" },
+          { name: "TNT", src: "img/tnt.jpg" },
+          { name: "TNT", src: "img/tnt.jpg" },
+          { name: "Potion", src: "img/potion.jpg" },
+          { name: "Potion", src: "img/potion.jpg" },
+          { name: "Potion", src: "img/potion.jpg" },
+          { name: "Shield", src: "img/shield.jpg" },
+          { name: "Bowling Bomb", src: "img/bowlingBomb.jpg" },
+          { name: "Turbo Boost", src: "img/turbo.jpg" },
+        ];
+      var weaponList2 = [
+          { name: "TNT", src: "img/tnt.jpg" },
+          { name: "Potion", src: "img/potion.jpg" },
+          { name: "Shield", src: "img/shield.jpg" },
+          { name: "Bowling Bomb", src: "img/bowlingBomb.jpg" },
+          { name: "Bowling Bomb", src: "img/bowlingBomb.jpg" },
+          { name: "Bowling Bomb", src: "img/bowlingBomb.jpg" },
+          { name: "Bowling Bomb", src: "img/bowlingBomb.jpg" },
+          { name: "Tracking Missile", src: "img/tracking.jpg" },
+          { name: "Tracking Missile", src: "img/tracking.jpg" },
+          { name: "Tracking Missile", src: "img/tracking.jpg" },
+          { name: "Tracking Missile", src: "img/tracking.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "Turbo Boost", src: "img/turbo.jpg" },
+          { name: "Turbo Boost", src: "img/turbo.jpg" },
+          { name: "3 Tracking Missiles", src: "img/tracking3.jpg" },
+          { name: "3 Bowling Bombs", src: "img/bowling3.jpg" }
+      ];
+      var weaponList3 = [
+          { name: "TNT", src: "img/tnt.jpg" },
+          { name: "Potion", src: "img/potion.jpg" },
+          { name: "Shield", src: "img/shield.jpg" },
+          { name: "Bowling Bomb", src: "img/bowlingBomb.jpg" },
+          { name: "Bowling Bomb", src: "img/bowlingBomb.jpg" },
+          { name: "Bowling Bomb", src: "img/bowlingBomb.jpg" },
+          { name: "Bowling Bomb", src: "img/bowlingBomb.jpg" },
+          { name: "Tracking Missile", src: "img/tracking.jpg" },
+          { name: "Tracking Missile", src: "img/tracking.jpg" },
+          { name: "Tracking Missile", src: "img/tracking.jpg" },
+          { name: "Tracking Missile", src: "img/tracking.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "N. Tropy Clock", src: "img/clock.jpg" },
+          { name: "Turbo Boost", src: "img/turbo.jpg" },
+          { name: "3 Tracking Missiles", src: "img/tracking3.jpg" },
+          { name: "3 Tracking Missiles", src: "img/tracking3.jpg" },
+          { name: "3 Bowling Bombs", src: "img/bowling3.jpg" },
+          { name: "3 Bowling Bombs", src: "img/bowling3.jpg" }
+      ];
+        var weaponList4 = [
+          { name: "TNT", src: "img/tnt.jpg" },
+          { name: "Potion", src: "img/potion.jpg" },
+          { name: "Shield", src: "img/shield.jpg" },
+          { name: "Bowling Bomb", src: "img/bowlingBomb.jpg" },
+          { name: "Bowling Bomb", src: "img/bowlingBomb.jpg" },
+          { name: "Bowling Bomb", src: "img/bowlingBomb.jpg" },
+          { name: "Tracking Missile", src: "img/tracking.jpg" },
+          { name: "Tracking Missile", src: "img/tracking.jpg" },
+          { name: "Tracking Missile", src: "img/tracking.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "N. Tropy Clock", src: "img/clock.jpg" },
+          { name: "Turbo Boost", src: "img/turbo.jpg" },
+          { name: "3 Tracking Missiles", src: "img/tracking3.jpg" },
+          { name: "3 Bowling Bombs", src: "img/bowling3.jpg" }
+      ];
+        var weaponList5 = [
+          { name: "TNT", src: "img/tnt.jpg" },
+          { name: "Potion", src: "img/potion.jpg" },
+          { name: "Shield", src: "img/shield.jpg" },
+          { name: "Bowling Bomb", src: "img/bowlingBomb.jpg" },
+          { name: "Bowling Bomb", src: "img/bowlingBomb.jpg" },
+          { name: "Tracking Missile", src: "img/tracking.jpg" },
+          { name: "Tracking Missile", src: "img/tracking.jpg" },
+          { name: "Tracking Missile", src: "img/tracking.jpg" },
+          { name: "Tracking Missile", src: "img/tracking.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "N. Tropy Clock", src: "img/clock.jpg" },
+          { name: "Turbo Boost", src: "img/turbo.jpg" },
+          { name: "3 Tracking Missiles", src: "img/tracking3.jpg" },
+          { name: "3 Tracking Missiles", src: "img/tracking3.jpg" },
+          { name: "3 Bowling Bombs", src: "img/bowling3.jpg" },
+          { name: "3 Bowling Bombs", src: "img/bowling3.jpg" }
+      ];
+        var weaponList6 = [
+          { name: "TNT", src: "img/tnt.jpg" },
+          { name: "Potion", src: "img/potion.jpg" },
+          { name: "Shield", src: "img/shield.jpg" },
+          { name: "Bowling Bomb", src: "img/bowlingBomb.jpg" },
+          { name: "Tracking Missile", src: "img/tracking.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "N. Tropy Clock", src: "img/clock.jpg" },
+          { name: "N. Tropy Clock", src: "img/clock.jpg" },
+          { name: "N. Tropy Clock", src: "img/clock.jpg" },
+          { name: "Turbo Boost", src: "img/turbo.jpg" },
+          { name: "3 Tracking Missiles", src: "img/tracking3.jpg" },
+          { name: "3 Tracking Missiles", src: "img/tracking3.jpg" },
+          { name: "3 Bowling Bombs", src: "img/bowling3.jpg" }
+      ];
+        var weaponList7 = [
+          { name: "TNT", src: "img/tnt.jpg" },
+          { name: "Potion", src: "img/potion.jpg" },
+          { name: "Shield", src: "img/shield.jpg" },
+          { name: "Bowling Bomb", src: "img/bowlingBomb.jpg" },
+          { name: "Tracking Missile", src: "img/tracking.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "N. Tropy Clock", src: "img/clock.jpg" },
+          { name: "N. Tropy Clock", src: "img/clock.jpg" },
+          { name: "N. Tropy Clock", src: "img/clock.jpg" },
+          { name: "Turbo Boost", src: "img/turbo.jpg" },
+          { name: "3 Tracking Missiles", src: "img/tracking3.jpg" },
+          { name: "3 Tracking Missiles", src: "img/tracking3.jpg" },
+          { name: "3 Bowling Bombs", src: "img/bowling3.jpg" }
+      ];
+        var weaponList8 = [
+          { name: "TNT", src: "img/tnt.jpg" },
+          { name: "Potion", src: "img/potion.jpg" },
+          { name: "Shield", src: "img/shield.jpg" },
+          { name: "Bowling Bomb", src: "img/bowlingBomb.jpg" },
+          { name: "Bowling Bomb", src: "img/bowlingBomb.jpg" },
+          { name: "Tracking Missile", src: "img/tracking.jpg" },
+          { name: "Tracking Missile", src: "img/tracking.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Aku Aku", src: "img/aku.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "Warp Orb", src: "img/warpOrb.jpg" },
+          { name: "N. Tropy Clock", src: "img/clock.jpg" },
+          { name: "N. Tropy Clock", src: "img/clock.jpg" },
+          { name: "N. Tropy Clock", src: "img/clock.jpg" },
+          { name: "N. Tropy Clock", src: "img/clock.jpg" },
+          { name: "Turbo Boost", src: "img/turbo.jpg" },
+          { name: "3 Tracking Missiles", src: "img/tracking3.jpg" },
+          { name: "3 Tracking Missiles", src: "img/tracking3.jpg" },
+          { name: "3 Bowling Bombs", src: "img/bowling3.jpg" },
+      ];
+
+        
+      weaponCrate.addEventListener("click", getWeapon);
+        
+      function getWeapon() {
+          var showWeapon = weaponList1[Math.floor(Math.random()*weaponList1.length)];
+          if (position.value == 0 || position.value > 8 || Number.isNaN(parseFloat(position.value))) {
+              position.style.borderColor = "red";
+              validate.style.display = "inline";
+          } else {
+          weapon.textContent = showWeapon.name;
+          weaponImage.src = showWeapon.src;
+          position.style.borderColor = "grey";
+          validate.style.display = "none";
+              if (position.value == 1) {
+              showWeapon = weaponList1[Math.floor(Math.random()*weaponList1.length)];
+          } else if (position.value == 2) {
+              showWeapon = weaponList2[Math.floor(Math.random()*weaponList2.length)];
+              weapon.textContent = showWeapon.name;
+              weaponImage.src = showWeapon.src;
+          } else if (position.value == 3) {
+              showWeapon = weaponList3[Math.floor(Math.random()*weaponList3.length)];
+              weapon.textContent = showWeapon.name;
+              weaponImage.src = showWeapon.src;
+          } else if (position.value == 4) {
+              showWeapon = weaponList4[Math.floor(Math.random()*weaponList4.length)];
+              weapon.textContent = showWeapon.name;
+              weaponImage.src = showWeapon.src;
+          } else if (position.value == 5) {
+              showWeapon = weaponList5[Math.floor(Math.random()*weaponList5.length)];
+              weapon.textContent = showWeapon.name;
+              weaponImage.src = showWeapon.src;
+          } else if (position.value == 6) {
+              showWeapon = weaponList6[Math.floor(Math.random()*weaponList6.length)];
+              weapon.textContent = showWeapon.name;
+              weaponImage.src = showWeapon.src;
+          } else if (position.value == 7) {
+              showWeapon = weaponList7[Math.floor(Math.random()*weaponList7.length)];
+              weapon.textContent = showWeapon.name;
+              weaponImage.src = showWeapon.src;
+          } else if (position.value == 8) {
+              showWeapon = weaponList8[Math.floor(Math.random()*weaponList8.length)];
+              weapon.textContent = showWeapon.name;
+              weaponImage.src = showWeapon.src;
+          } 
+              
+          }
+             
+      }
+    </script>
+      
+  </body>
+</html>
